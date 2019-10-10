@@ -81,7 +81,11 @@ public class KethaneVesselScanner : VesselModule
 	void FindGenerators ()
 	{
 		var generators = vessel.FindPartModulesImplementing<ModuleGenerator>();
-		generatorEC = 0;
+
+		// TODO: Fix so that nuclear power generators also count as an EC source
+		generatorEC = 1000;
+
+		//generatorEC = 0;
 		for (int i = generators.Count; i-- > 0; ) {
 			var gen = generators[i];
 			var resHandler = gen.resHandler;

@@ -34,15 +34,27 @@
   <ItemGroup>
     <Reference Include="Assembly-CSharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Games\Steam\SteamApps\common\Kerbal Space Program\KSP_x64_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Games\Steam\SteamApps\common\Kerbal Space Program\KSP_x64_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="GeodesicGrid" />
+    <Reference Include="KSPAssets">
+      <HintPath>D:\Games\Steam\SteamApps\common\Kerbal Space Program\KSP_x64_Data\Managed\KSPAssets.dll</HintPath>
+    </Reference>
+    <Reference Include="KSPTrackIR">
+      <HintPath>D:\Games\Steam\SteamApps\common\Kerbal Space Program\KSP_x64_Data\Managed\KSPTrackIR.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Games\Steam\SteamApps\common\Kerbal Space Program\KSP_x64_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>D:\Games\Steam\SteamApps\common\Kerbal Space Program\KSP_x64_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -85,17 +97,29 @@
     <Compile Include="UserInterface\TerrainData.cs" />
     <Compile Include="PartModules\TimedMovingAverage.cs" />
     <Compile Include="Utilities\LicenseSentinel.cs" />
+    <Compile Include="Utilities\ShaderLoader.cs" />
     <Compile Include="Utilities\TutorialInstaller.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\AlphaUnlitVertexColored.txt" />
+    <Compile Include="VesselModules\IKethaneBattery.cs" />
+    <Compile Include="VesselModules\KethaneBattery.cs" />
+    <Compile Include="VesselModules\KethaneProtoBattery.cs" />
+    <Compile Include="VesselModules\KethaneProtoDetector.cs" />
+    <Compile Include="VesselModules\KethaneScanner.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Kethane-LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="GeodesicGrid.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /y $(TargetPath) "D:\Games\Steam\SteamApps\common\Kerbal Space Program\GameData\Kethane\Plugins"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
